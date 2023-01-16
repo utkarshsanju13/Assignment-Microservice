@@ -30,14 +30,14 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	@Override
-	public List<Account> deleteAccount(Long customerId) {
+	public List<Account> deleteAccount(Long accountId) {
 		
 
 		List<Account> listOfAccountToBeDeleted = list.stream().
-				filter(account -> account.getCustomerId().equals(customerId)).
+				filter(account -> account.getCustomerId().equals(accountId)).
 					collect(Collectors.toList());
 		if(listOfAccountToBeDeleted.isEmpty())
-			throw new AccountNotFoundException("Account doesn't found of given customer Id :"+ customerId);
+			throw new AccountNotFoundException("Account doesn't found of given customer Id :"+ accountId);
 		
 		list.removeAll(listOfAccountToBeDeleted);
 		return listOfAccountToBeDeleted;
@@ -51,18 +51,18 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	@Override
-	public Customer getAllDetails(Long customerId) {
+	public Customer getAllDetails(Long accountId) {
 		
 		
 		List<Account> accountDetails = list.stream().
-				filter(account -> account.getCustomerId().equals(customerId)).
+				filter(account -> account.getCustomerId().equals(accountId)).
 					collect(Collectors.toList());
 		
 		if(accountDetails.isEmpty())
-			throw new AccountNotFoundException("Account doesn't found of given customer Id :"+ customerId);
+			throw new AccountNotFoundException("Account doesn't found of given customer Id :"+ accountId);
 		
 		
-		Customer customerDetails = this.restTemplate.getForObject("http://localhost:8080/customer/"+ customerId, Customer.class);
+		Customer customerDetails = this.restTemplate.getForObject("http://localhost:8080/customer/"+ accountId, Customer.class);
 		customerDetails.setAccount(accountDetails);
 		
 		return customerDetails;

@@ -26,25 +26,25 @@ public class AccountController {
 	private AccountService accountService;
 	
 	
-	@DeleteMapping("/deleteAccount/{customerId}")
-	public ResponseEntity<?> deleteAcount(@PathVariable("customerId") Long customerId){
+	@DeleteMapping("/deleteAccount/{accountId}")
+	public ResponseEntity<?> deleteAcount(@PathVariable("accountId") Long accountId){
 		
-		List<Account> deletedAccounts = accountService.deleteAccount(customerId);
+		List<Account> deletedAccounts = accountService.deleteAccount(accountId);
 		
 		return new ResponseEntity<>(deletedAccounts, HttpStatus.OK);
 	}
 	
-	//THIS HAS TO DELETED ONLY TO CHECK 
+	//THIS HAS TO DELETED ONLY FOR TESTING PURPOSE
 	@GetMapping("/getAllAccounts")
 	public List<Account> getAllAccount(){
 		
 		return accountService.getAllAccount();
 	}
 	
-	@GetMapping("/getAccountDetails/{customerId}")
-	public ResponseEntity<Customer> getAccountDetails(@PathVariable("customerId") Long customerId) {
+	@GetMapping("/getAccountDetails/{accountId}")
+	public ResponseEntity<Customer> getAccountDetails(@PathVariable("accountId") Long accountId) {
 		
-		Customer customerDetails = accountService.getAllDetails(customerId);
+		Customer customerDetails = accountService.getAllDetails(accountId);
 		return new ResponseEntity<>(customerDetails, HttpStatus.OK);	
 	}
 	

@@ -7,11 +7,11 @@ import com.assignment.AccountManagement.entities.Customer;
 
 public interface AccountService {
 	
-	public List<Account> deleteAccount(Long customerId);
+	public List<Account> deleteAccount(Long accountId);
 
 	public List<Account> getAllAccount();
 
-	public Customer getAllDetails(Long customerId);
+	public Customer getAllDetails(Long accountId);
 
 	public Account addMoney(Long accountId, Customer customerDetails, Long amount);
 
