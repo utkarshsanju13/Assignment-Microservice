@@ -79,7 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
 				.orElseThrow(() -> new NoSuchCustomerExistsException("Customer not found for this id :: " + customerId));
 
 		HttpEntity<Long> requestEntity = new HttpEntity<Long>(customerId);
-		ResponseEntity<?> accountToBeDeleted = this.restTemplate.exchange("http://localhost:8081/account/deleteAccount/"+ customerId, HttpMethod.DELETE, requestEntity, List.class);
+		ResponseEntity<?> accountToBeDeleted = this.restTemplate.exchange("http://accountmanagement-service/account/deleteAccount/"+ customerId, HttpMethod.DELETE, requestEntity, List.class);
 		
 		List<Account> listOfDeletedAccount = (List<Account>) accountToBeDeleted.getBody();
 		exitingCustomer.setAccount(listOfDeletedAccount);

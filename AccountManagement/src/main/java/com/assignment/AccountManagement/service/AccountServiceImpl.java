@@ -62,7 +62,7 @@ public class AccountServiceImpl implements AccountService {
 			throw new AccountNotFoundException("Account doesn't found of given customer Id :"+ accountId);
 		
 		
-		Customer customerDetails = this.restTemplate.getForObject("http://localhost:8080/customer/"+ accountId, Customer.class);
+		Customer customerDetails = this.restTemplate.getForObject("http://customermanagement-service/customer/"+ accountId, Customer.class);
 		customerDetails.setAccount(accountDetails);
 		
 		return customerDetails;
@@ -77,7 +77,7 @@ public class AccountServiceImpl implements AccountService {
 		
 				/* Validation of Customer Details */
 		try {
-			this.restTemplate.getForObject("http://localhost:8080/customer/"+ customer.getCustomerId(), Customer.class);
+			this.restTemplate.getForObject("http://customermanagement-service/customer/"+ customer.getCustomerId(), Customer.class);
 			accountDetails.setBalance(accountDetails.getBalance()+amount);
 		}catch(HttpStatusCodeException e) {
 			throw new CustomerIsNotValid("The Customer Details is Invalid");
@@ -97,7 +97,7 @@ public class AccountServiceImpl implements AccountService {
 		
 				/* Validation of Customer Details */
 		try {
-			this.restTemplate.getForObject("http://localhost:8080/customer/"+ customer.getCustomerId(), Customer.class);
+			this.restTemplate.getForObject("http://customermanagement-service/customer/"+ customer.getCustomerId(), Customer.class);
 			accountDetails.setBalance(accountDetails.getBalance()-amount);
 		}catch(HttpStatusCodeException e) {
 			throw new CustomerIsNotValid("The Customer Details is Invalid");
@@ -106,6 +106,5 @@ public class AccountServiceImpl implements AccountService {
 		return accountDetails;
 		
 	}
-
 
 }
