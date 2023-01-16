@@ -1,0 +1,57 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@utkarshsanju13 
+spring-projects
+/
+spring-boot
+Public
+Fork your own copy of spring-projects/spring-boot
+Code
+Issues
+564
+Pull requests
+39
+Actions
+Projects
+Wiki
+Security
+Insights
+spring-boot/.gitignore
+@wilkinsona
+wilkinsona Configure JTA tests to write logs beneath build/
+…
+Latest commit 4444749 on May 14, 2021
+ History
+ 10 contributors
+@philwebb@dsyer@gregturn@wilkinsona@rajadilipkolli@isopov@runningcode@mbhave@mathieufortin01@izeye
+42 lines (42 sloc)  429 Bytes
+
+
+*.jar
+
+
+.classpath
+.factorypath
+.gradle
+.idea
+.metadata
+.project
+
+.vscode
+/code
+MANIFEST.MF
+
+bin
+build
+!/**/src/**/bin
+!/**/src/**/build
+
+
+
+manifest.yml
